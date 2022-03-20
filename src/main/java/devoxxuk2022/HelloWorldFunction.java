@@ -12,6 +12,7 @@ import com.microsoft.azure.functions.annotation.HttpTrigger;
 import java.util.Optional;
 
 public class HelloWorldFunction {
+
     // example call <host>/api/hello?name=x
     @FunctionName("Hello")
     public HttpResponseMessage run(
