@@ -13,6 +13,8 @@ import java.util.Optional;
 
 public class HelloWorldFunction {
 
+    private static final String DEFAULT_VALUE = "World";
+
     // example call <host>/api/hello?name=x
     @FunctionName("Hello")
     public HttpResponseMessage run(
@@ -24,14 +26,17 @@ public class HelloWorldFunction {
             final ExecutionContext context) {
 
         final String name = request.getQueryParameters().get("name");
-        final String reply = handleRequest(name);
+        final String reply = handleInput(name);
 
         return request.createResponseBuilder(HttpStatus.OK).body(reply).build();
     }
 
-    private String handleRequest(String name) {
-        if (name == null || name.length() == 0) {
-            name = "World";
+    private String handleInput(String input) {
+
+        String name = DEFAULT_VALUE;
+
+        if (name != null && name.length() != 0) {
+            name = input;
         }
 
         return String.format("Hello %s!", name);
