@@ -32,10 +32,9 @@ public class HelloWorldFunction {
     }
 
     private String handleInput(String input) {
-
         String name = DEFAULT_VALUE;
 
-        if (name != null && name.length() != 0) {
+        if (input != null && input.length() != 0) {
             name = input;
         }
 
